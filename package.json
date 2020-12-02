@@ -1,0 +1,22 @@
+{
+  "name": "personal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZEMontreuil/memcore-40k.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZEMontreuil/memcore-40k/issues"
+  },
+  "homepage": "https://github.com/ZEMontreuil/memcore-40k#readme",
+  "dependencies": {
+    "modal-vanilla": "^0.9.0"
+  }
+}
