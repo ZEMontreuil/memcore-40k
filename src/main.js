@@ -1,3 +1,5 @@
+// WHAT's THE DEAL WITH CAULIFLOWER
+
 class Game {
   constructor(players, turns, scoreLimit, cpStart) {
     this.players = players;
@@ -16,12 +18,6 @@ class Player {
 }
 
 class UI {
-  static startMenuEle = document.querySelector('.start-menu');
-  static playerNumEle = UI.startMenuEle.querySelector('#starting-players');
-  static cpNumEle = UI.startMenuEle.querySelector('#starting-cp');
-  static scoreLimitEle = UI.startMenuEle.querySelector('#score-limit');
-  static turnLimitEle = UI.startMenuEle.querySelector('#turn-limit');
-
   static getStartingInfo (numPlayers, numCP, numScore, numTurn) {  
     if (numPlayers < 1 || numCP < 0 || numScore < 1 || numTurn < 3) {
       return 'Invalid starting values';
@@ -33,12 +29,12 @@ class UI {
       players.push(new Player(i, numCP));
     }
 
-    UI.game = new Game(players, numTurn, numScore, numCP);
+    this.game = new Game(players, numTurn, numScore, numCP);
     return 'Game start.';
   }
 
   static clearStartForm() {
-    let children = UI.startMenuEle.children;
+    let children = this.startMenuEle.children;
 
     for(let i = 0; i < children.length; i++) {
       let inputEle = children[i]['lastElementChild'];
@@ -50,19 +46,25 @@ class UI {
   }
 
   constructor() {
-    UI.startMenuEle.addEventListener("submit", e => {
+    this.startMenuEle = document.querySelector('.start-menu');
+    this.playerNumEle = this.startMenuEle.querySelector('#starting-players');
+    this.cpNumEle = this.startMenuEle.querySelector('#starting-cp');
+    this.scoreLimitEle = this.startMenuEle.querySelector('#score-limit');
+    this.turnLimitEle = this.startMenuEle.querySelector('#turn-limit');
+
+    this.game;
+  
+    this.startMenuEle.addEventListener("submit", e => {
       e.preventDefault();
 
-      alert(UI.getStartingInfo(UI.playerNumEle.value, UI.cpNumEle.value,
-        UI.scoreLimitEle.value, UI.turnLimitEle.value));
+      alert(UI.getStartingInfo(this.playerNumEle.value, this.cpNumEle.value,
+        this.scoreLimitEle.value, this.turnLimitEle.value));
 
       UI.clearStartForm();
     });
   }
-
-  static game;
 }
 
-let currentUI = new UI();
+let theRealUI = new UI();
 
 
